@@ -74,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cover.xaml.cs">
+      <DependentUpon>Cover.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,10 @@
     <Compile Include="UserLibs\SimpleLogger.cs" />
     <Compile Include="UserLibs\Title.cs" />
     <Compile Include="UserLibs\User.cs" />
+    <Page Include="Cover.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
