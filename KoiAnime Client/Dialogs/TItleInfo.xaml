@@ -18,7 +18,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <GroupBox Header="Description" Grid.Column="1" Grid.RowSpan="2"/>
+        <GroupBox Header="Description" Grid.Column="1" Grid.RowSpan="2">
+            <TextBlock x:Name="DescriptionBlock"  TextWrapping="Wrap"/>
+        </GroupBox>
         <GroupBox Header="Data" Grid.Column="2" Grid.RowSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -32,6 +34,13 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <Label Content="Author" Grid.Column="0" Grid.Row="0"/>
+                <Label x:Name="AuthorName" Content="Autor pollas" Grid.Column="0" Grid.Row="0" Margin="0,15,0,0" Grid.ColumnSpan="2"/>
+                <Label Content="Year" Grid.Column="0" Grid.Row="1"/>
+                <Label Content="Year" Grid.Column="0" Grid.Row="1" Margin="0,15,0,0"/>
+                <Label Content="Seasons" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,10,0,0"/>
+                <Separator Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,-25"/>
+                <ComboBox Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,0,0,0"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Cover" Grid.RowSpan="2" >
@@ -39,9 +48,9 @@
                 <Image x:Name="CoverImg"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="SeasonAnimeList" Header="List" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,10,0,0">
+        <GroupBox x:Name="SeasonAnimeList" Header="List" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0">
             <Grid Margin="0,0,0,0">
-                <ListBox />
+                <ListBox x:Name="AnimeListBox" />
             </Grid>
         </GroupBox>
     </Grid>
