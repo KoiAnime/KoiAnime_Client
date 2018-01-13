@@ -80,6 +80,9 @@
     <Compile Include="Dialogs\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\TItleInfo.xaml.cs">
+      <DependentUpon>TItleInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserLibs\MetroDialog.cs" />
     <Compile Include="UserLibs\SimpleLogger.cs" />
     <Compile Include="UserLibs\Title.cs" />
@@ -89,6 +92,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Dialogs\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\TItleInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,48 @@
+﻿<Controls:MetroWindow x:Class="KoiAnime_Client.Dialogs.TItleInfo"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      Title="TItleInfo"
+                      Height="350"
+                      Width="525"
+                      MaxHeight="440"
+                      MaxWidth="620">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Description" Grid.Column="1" Grid.RowSpan="2"/>
+        <GroupBox Header="Data" Grid.Column="2" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Cover" Grid.RowSpan="2" >
+            <Grid>
+                <Image x:Name="CoverImg"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="SeasonAnimeList" Header="List" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,10,0,0">
+            <Grid Margin="0,0,0,0">
+                <ListBox />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Controls:MetroWindow>
