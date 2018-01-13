@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KoiAnime.UserLibs;
 using KoiAnime_Client.UserLibs;
 using MahApps.Metro.Controls;
 using Newtonsoft.Json.Linq;
@@ -26,7 +27,9 @@ namespace KoiAnime_Client
     {
         RestClient client = new RestClient("http://localhost:5550/");
         public static List<string> InvalidJsonElements;
-        //Title[] topRated;
+        private static IList<Title> titles = null;
+        private static IList<Cover> covers = null;
+        private static SimpleLogger logger = new SimpleLogger();
 
         public MainWindow()
         {
