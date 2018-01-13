@@ -34,6 +34,11 @@ namespace KoiAnime_Client
         public MainWindow()
         {
             InitializeComponent();
+            var request = new RestRequest("{id}", Method.GET);
+            request.AddUrlSegment("id", "TopRated");
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+            CreateTopRated(content);
         }
 
         #region Methods
@@ -71,16 +76,62 @@ namespace KoiAnime_Client
         private void Pages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TabItem tabItem = e.Source as TabItem;
-
-            switch(tabItem.Name)
+            if (tabItem != null)
             {
-                case "TopRated":
-                    var request = new RestRequest("{id}", Method.GET);
-                    request.AddUrlSegment("id", "TopRated");
-                    IRestResponse response = client.Execute(request);
-                    var content = response.Content;
-                    break;
+                switch (tabItem.Name)
+                {
+                    case "TopRated":
+                        var requestrated = new RestRequest("{id}", Method.GET);
+                        requestrated.AddUrlSegment("id", "TopRated");
+                        IRestResponse responserated = client.Execute(requestrated);
+                        var contentrated = responserated.Content;
+                        CreateTopRated(contentrated);
+                        break;
+
+                    case "Gallery":
+                        var requestgallery = new RestRequest("{id}", Method.GET);
+                        requestgallery.AddUrlSegment("id", "Gallery");
+                        IRestResponse responsegallery = client.Execute(requestgallery);
+                        var contentgallery = responsegallery.Content;
+                        CreateGallery(contentgallery);
+                        break;
+                }
             }
+        }
+
+        private void CreateTopRated(string json)
+        {
+            titles = null;
+
+            titles = DeserializeToList<Title>(json);
+
+            for (int i = 0;i < titles.Count;i++)
+            {
+                Title t = titles[i];
+                Cover c = c = new Cover(t.TitleId, t.TitleName, t.TitleDescription, t.TitleCategory, t.TitleNumberChapters, t.TitleStartDateTime, t.TitleCoverImg, t.TitleState, t.TitleViews);
+                c.MouseLeftButtonDown += new MouseButtonEventHandler(Cover_click);
+                TopTen.Items.Add(c);
+            }
+        }
+
+        private void CreateGallery(string json)
+        {
+            titles = null;
+
+            titles = DeserializeToList<Title>(json);
+
+            for (int i = 0; i < titles.Count; i++)
+            {
+                Title t = titles[i];
+                Cover c = c = new Cover(t.TitleId, t.TitleName, t.TitleDescription, t.TitleCategory, t.TitleNumberChapters, t.TitleStartDateTime, t.TitleCoverImg, t.TitleState, t.TitleViews);
+                c.MouseLeftButtonDown += new MouseButtonEventHandler(Cover_click);
+                GalleryBox.Items.Add(c);
+            }
+        }
+
+        private async void Cover_click(object sender, MouseButtonEventArgs e)
+        {
+            await MetroDialog.MessageBoxAsync(this, "This works", "Info");
         }
     }
 }
