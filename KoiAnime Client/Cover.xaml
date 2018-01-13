@@ -7,7 +7,7 @@
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" d:DesignWidth="220" Height="294.666">
     <Grid Margin="0,0,0,0">
-        <controls:Badged x:Name="Badge" Margin="165,10,10,244" RenderTransformOrigin="0.533,1.667" Grid.ZIndex="1"></controls:Badged>
+        <controls:Badged x:Name="Badge" Margin="165,10,10,244" RenderTransformOrigin="0.533,1.667" Grid.ZIndex="1" BadgeBackground="LimeGreen"></controls:Badged>
         <Image x:Name="cover" HorizontalAlignment="Left" Width="200" Stretch="Fill" Margin="10,0,0,35" >
         </Image>
         <Label x:Name="titleName" Content="" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="200" Height="30">

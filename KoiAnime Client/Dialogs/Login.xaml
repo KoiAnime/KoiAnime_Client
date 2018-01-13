@@ -14,9 +14,9 @@
                     <GroupBox Header="Login" HorizontalAlignment="Left" Height="274" Margin="0" VerticalAlignment="Top" Width="511">
                         <Grid>
                             <Label Content="Account Username" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="118"/>
-                            <TextBox x:Name="UserNameText" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="UserNameText" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Controls:TextBoxHelper.Watermark="Username"/>
                             <Label Content="Account Password" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="118"/>
-                            <PasswordBox x:Name="UserPasswordText" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="118"/>
+                            <PasswordBox x:Name="UserPasswordText" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="118" Controls:TextBoxHelper.Watermark="Password"/>
                             <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Left" Margin="177,179,0,0" VerticalAlignment="Top" Width="75" Click="BtnLogin_Click"/>
                         </Grid>
                     </GroupBox>
