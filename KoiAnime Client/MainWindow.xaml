@@ -34,7 +34,7 @@
                 <TabControl Background="{x:Null}" >
                     <TabItem Background="White" Foreground="#00000000" Header="Series" BorderBrush="#FF0017FF">
                         <Grid>
-                            <!--<Button x:Name="testbtn" Content="Hola"/>-->
+                            
                         </Grid>
                     </TabItem>
                     <TabItem Background="White" Foreground="#00000000" Header="Categories" BorderBrush="#FF0017FF">
