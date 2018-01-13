@@ -32,10 +32,20 @@ namespace KoiAnime_Client.Dialogs
 
         public string Encrypt(string password)
         {
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
-            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            string hash = System.Text.Encoding.ASCII.GetString(data);
+            string hash = BCrypt.Net.BCrypt.HashPassword(password);
             return hash;
+        }
+
+        public bool Verify(string password,string hashedpassword)
+        {
+            bool isverified = false;
+
+            if (BCrypt.Net.BCrypt.Verify(password,Encrypt(hashedpassword)))
+            {
+                isverified = true;
+            }
+
+            return isverified;
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
@@ -48,9 +58,11 @@ namespace KoiAnime_Client.Dialogs
 
             User u = JsonConvert.DeserializeObject<User>(content);
 
-            if (u.password == Encrypt(UserPasswordText.Password))
+            if (Verify(UserPasswordText.Password,u.password))
             {
-                MessageBox.Show("Info","Well Done!");
+                MainWindow m = new MainWindow();
+                m.Show();
+                this.Close();
             }
         }
 
@@ -78,9 +90,8 @@ namespace KoiAnime_Client.Dialogs
                     request.AddUrlSegment("id", "createUser");
                     IRestResponse response = client.Execute(request);
                     var content = response.Content;
-                    MainWindow m = new MainWindow();
-                    m.Show();
-                    this.Close();
+
+                    await MetroDialog.MessageBoxAsync(this, "Information", "Now you can login and watch your anime :)");
                 }
             }
         }
