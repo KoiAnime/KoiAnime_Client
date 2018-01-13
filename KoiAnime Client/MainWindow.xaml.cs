@@ -34,11 +34,11 @@ namespace KoiAnime_Client
         public MainWindow()
         {
             InitializeComponent();
-            var request = new RestRequest("{id}", Method.GET);
+            /*var request = new RestRequest("{id}", Method.GET);
             request.AddUrlSegment("id", "TopRated");
             IRestResponse response = client.Execute(request);
             var content = response.Content;
-            CreateTopRated(content);
+            CreateTopRated(content);*/
         }
 
         #region Methods
@@ -75,32 +75,39 @@ namespace KoiAnime_Client
 
         private void Pages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TabItem tabItem = e.Source as TabItem;
+            TabControl tabControl = sender as TabControl; // e.Source could have been used instead of sender as well
+            TabItem tabItem = tabControl.SelectedValue as TabItem;
+
             if (tabItem != null)
             {
-                switch (tabItem.Name)
+                if (tabItem.Name != null)
                 {
-                    case "TopRated":
-                        var requestrated = new RestRequest("{id}", Method.GET);
-                        requestrated.AddUrlSegment("id", "TopRated");
-                        IRestResponse responserated = client.Execute(requestrated);
-                        var contentrated = responserated.Content;
-                        CreateTopRated(contentrated);
-                        break;
+                    switch (tabItem.Name)
+                    {
+                        case "TopRated":
+                            var requestrated = new RestRequest("{id}", Method.GET);
+                            requestrated.AddUrlSegment("id", "TopRated");
+                            IRestResponse responserated = client.Execute(requestrated);
+                            var contentrated = responserated.Content;
+                            CreateTopRated(contentrated);
+                            break;
 
-                    case "Gallery":
-                        var requestgallery = new RestRequest("{id}", Method.GET);
-                        requestgallery.AddUrlSegment("id", "Gallery");
-                        IRestResponse responsegallery = client.Execute(requestgallery);
-                        var contentgallery = responsegallery.Content;
-                        CreateGallery(contentgallery);
-                        break;
-                }
+                        case "Gallery":
+                            var requestgallery = new RestRequest("{id}", Method.GET);
+                            requestgallery.AddUrlSegment("id", "Gallery");
+                            IRestResponse responsegallery = client.Execute(requestgallery);
+                            var contentgallery = responsegallery.Content;
+                            CreateGallery(contentgallery);
+                            break;
+                    }
+                }      
             }
         }
 
         private void CreateTopRated(string json)
         {
+            TopTen.Items.Clear();
+
             titles = null;
 
             titles = DeserializeToList<Title>(json);
@@ -116,6 +123,8 @@ namespace KoiAnime_Client
 
         private void CreateGallery(string json)
         {
+            GalleryBox.Items.Clear();
+
             titles = null;
 
             titles = DeserializeToList<Title>(json);
