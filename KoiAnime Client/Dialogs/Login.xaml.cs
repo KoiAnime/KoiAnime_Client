@@ -32,20 +32,10 @@ namespace KoiAnime_Client.Dialogs
 
         public string Encrypt(string password)
         {
-            string hash = BCrypt.Net.BCrypt.HashPassword(password);
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+            data = new System.Security.Cryptography.SHA512Managed().ComputeHash(data);
+            string hash = System.Text.Encoding.ASCII.GetString(data);
             return hash;
-        }
-
-        public bool Verify(string password,string hashedpassword)
-        {
-            bool isverified = false;
-
-            if (BCrypt.Net.BCrypt.Verify(password,Encrypt(hashedpassword)))
-            {
-                isverified = true;
-            }
-
-            return isverified;
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
@@ -58,7 +48,7 @@ namespace KoiAnime_Client.Dialogs
 
             User u = JsonConvert.DeserializeObject<User>(content);
 
-            if (Verify(UserPasswordText.Password,u.password))
+            if (Encrypt(UserPasswordText.Password) == u.password)
             {
                 MainWindow m = new MainWindow();
                 m.Show();
