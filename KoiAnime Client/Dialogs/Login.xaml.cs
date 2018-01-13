@@ -48,7 +48,7 @@ namespace KoiAnime_Client.Dialogs
 
             User u = JsonConvert.DeserializeObject<User>(content);
 
-            if (Encrypt(UserPasswordText.Password) == u.password)
+            if (u.password == Encrypt(UserPasswordText.Password))
             {
                 MainWindow m = new MainWindow();
                 m.Show();
