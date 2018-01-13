@@ -25,9 +25,6 @@ namespace KoiAnime_Client.Dialogs
         public TItleInfo()
         {
             InitializeComponent();
-            TimeSpan duration;
-            GetDuration(@"E:\Bibliotecas\Anime\Boku No Hero Academia\Boku No Hero Academia  s2e02.mp4", out duration);
-            MessageBox.Show(duration.TotalMinutes.ToString(),"Info");
         }
 
         /// <summary>
@@ -40,7 +37,7 @@ namespace KoiAnime_Client.Dialogs
         {
             try
             {
-                var shl = new Shell();
+                Shell shl = new Shell();
                 var fldr = shl.NameSpace(System.IO.Path.GetDirectoryName(filename));
                 var itm = fldr.ParseName(System.IO.Path.GetFileName(filename));
 
