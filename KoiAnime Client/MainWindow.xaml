@@ -30,18 +30,6 @@
                     </ListBox>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Administration" Background="White" Foreground="#00000000" Header="Admin" BorderBrush="#FF0017FF">
-                <TabControl Background="{x:Null}" >
-                    <TabItem Background="White" Foreground="#00000000" Header="Series" BorderBrush="#FF0017FF">
-                        <Grid>
-                            
-                        </Grid>
-                    </TabItem>
-                    <TabItem Background="White" Foreground="#00000000" Header="Categories" BorderBrush="#FF0017FF">
-                        <Button Content="Test"/>
-                    </TabItem>
-                </TabControl>
-            </TabItem>
         </TabControl>
     </Grid>
 </Controls:MetroWindow>
