@@ -30,6 +30,11 @@
                     </ListBox>
                 </Grid>
             </TabItem>
+            <TabItem x:Name="UserTabPage" Header="User" Background="White" Foreground="#00000000" BorderBrush="#FF0017FF">
+                <Grid>
+                    
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Controls:MetroWindow>
